@@ -1,14 +1,24 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono, JetBrains_Mono, Poppins } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import {Footer} from '@/components/ui/footer-section'
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["400", "800"],
+});
+
+
+const jetBrainisMono = JetBrains_Mono({
+  variable: "--font-jet-mono",
   subsets: ["latin"],
 });
 
@@ -23,11 +33,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${jetBrainisMono.variable} ${geistMono.variable} ${poppins.variable} antialiased w-full`}
       >
-        {children}
+        <Navbar/>
+        <div className="w-full mx-auto">
+          {children}
+        </div>
+        <Footer/>
+        
       </body>
     </html>
   );

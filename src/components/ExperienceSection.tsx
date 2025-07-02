@@ -65,11 +65,11 @@ const ExperienceSection: React.FC = () => {
     <div id="experience" className="min-h-screen bg-black py-20 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-6xl font-bold text-white mb-6">
+        <div className="text-center mb-10 sm:mb-14 md:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-5 md:mb-6">
             Professional Experience
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-xs sm:max-w-xl md:max-w-3xl mx-auto">
             Comprehensive cybersecurity expertise across consulting, training,
             and community building
           </p>

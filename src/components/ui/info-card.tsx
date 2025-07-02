@@ -38,9 +38,8 @@ export const InfoCard: React.FC<InfoCardProps> = ({
   borderWidth = 3,
   borderPadding = 14,
   cardBgColor = "#000",
-  shadowColor = "#242424",
-  patternColor1 = "rgba(230,230,230,0.15)",
-  patternColor2 = "rgba(240,240,240,0.15)",
+  // patternColor1 = "rgba(230,230,230,0.15)",
+  // patternColor2 = "rgba(240,240,240,0.15)",
   textColor = "#f5f5f5",
   hoverTextColor = "#242424",
   fontFamily = "'Roboto Mono', monospace",
@@ -73,9 +72,9 @@ export const InfoCard: React.FC<InfoCardProps> = ({
   const innerHeight = 344;
 
   // Pattern background (unchanged, just colors are props)
-  const pattern =
-    `linear-gradient(45deg, ${patternColor1} 25%, transparent 25%, transparent 75%, ${patternColor2} 75%),` +
-    `linear-gradient(-45deg, ${patternColor2} 25%, transparent 25%, transparent 75%, ${patternColor1} 75%)`;
+  // const pattern =
+  //   `linear-gradient(45deg, ${patternColor1} 25%, transparent 25%, transparent 75%, ${patternColor2} 75%),` +
+  //   `linear-gradient(-45deg, ${patternColor2} 25%, transparent 25%, transparent 75%, ${patternColor1} 75%)`;
 
   // Border gradient
   const borderGradient = `conic-gradient(from var(--rotation,0deg), ${borderColor} 0deg, ${borderColor} 90deg, ${borderBgColor} 90deg, ${borderBgColor} 360deg)`;

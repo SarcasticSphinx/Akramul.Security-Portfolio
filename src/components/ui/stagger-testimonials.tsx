@@ -4,13 +4,18 @@ import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import axiosInstance from "@/lib/axios";
-import { h1 } from "framer-motion/client";
 
 const SQRT_5000 = Math.sqrt(5000);
 
 interface TestimonialCardProps {
   position: number;
-  testimonial: (typeof testimonials)[0];
+  testimonial: {
+    testimonialId: number;
+    name: string;
+    testimonial: string;
+    profilePic?: string;
+    company?: string;
+  };
   handleMove: (steps: number) => void;
   cardSize: number;
 }
@@ -81,7 +86,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
           isCenter ? "text-primary-foreground" : "text-foreground"
         )}
       >
-        "{testimonial.testimonial}"
+        &quot;{testimonial.testimonial}&quot;
       </h3>
       <p
         className={cn(
@@ -99,7 +104,16 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 
 export const StaggerTestimonials: React.FC = () => {
   const [cardSize, setCardSize] = useState(365);
-  const [testimonialsList, setTestimonialsList] = useState([]);
+  interface Testimonial {
+    testimonialId: number;
+    name: string;
+    testimonial: string;
+    profilePic?: string;
+    company?: string;
+    // add any other fields your testimonial object has
+  }
+
+  const [testimonialsList, setTestimonialsList] = useState<Testimonial[]>([]);
   const [loading, setLoading] = useState(false)
 
   const fetchTestimonials = async () => {

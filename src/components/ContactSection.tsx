@@ -1,9 +1,8 @@
 "use client";
-import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { LampContainer } from "./ui/lamp";
-import { FiMail, FiPhone, FiMapPin, FiSend, FiDownload } from "react-icons/fi";
+import { FiMail, FiPhone, FiMapPin, FiDownload } from "react-icons/fi";
 import {
   BsFacebook,
   BsGithub,
@@ -155,7 +154,7 @@ const ContactSection = () => {
                 transition={{ delay: 0.3, duration: 0.6 }}
                 className="text-white text-5xl font-bold text-center"
               >
-                Let's Connect
+                Let&apos;s Connect
               </motion.h2>
 
               <motion.p
@@ -164,7 +163,7 @@ const ContactSection = () => {
                 transition={{ delay: 0.5, duration: 0.6 }}
                 className="text-gray-300 text-lg mt-2 text-center max-w-xl mx-auto"
               >
-                I'm open to freelance work, collaborations, or just a friendly
+                I&apos;m open to freelance work, collaborations, or just a friendly
                 hello.
               </motion.p>
             </LampContainer>

@@ -1,7 +1,7 @@
 import mongoose, { Document } from "mongoose";
 
 export interface IService extends Document {
-  timelineId: number;
+  serviceId: number;
   title: string;
   availability: string;
   content: string;
@@ -14,7 +14,7 @@ export interface IService extends Document {
 
 const ServiceSchema = new mongoose.Schema(
   {
-    timelineId: {
+    serviceId: {
       type: Number,
       required: true,
       unique: true,
@@ -57,6 +57,7 @@ const ServiceSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Service = mongoose.model<IService>("Service", ServiceSchema);
+const Service =
+  mongoose.models.Service || mongoose.model<IService>("Service", ServiceSchema);
 
 export default Service;

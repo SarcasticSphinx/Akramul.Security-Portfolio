@@ -3,7 +3,13 @@ import React from "react";
 import Image from "next/image";
 import RotatingText from "./ui/RotatingText/RotatingText";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
-import { BsFacebook, BsGithub, BsInstagram, BsLinkedin, BsTwitterX } from "react-icons/bs";
+import {
+  BsFacebook,
+  BsGithub,
+  BsInstagram,
+  BsLinkedin,
+  BsTwitterX,
+} from "react-icons/bs";
 import Link from "next/link";
 
 const Banner = () => {
@@ -44,24 +50,23 @@ const Banner = () => {
               <BsLinkedin size={24} />
             </Link>
             <Link
-              href="https://linkedin.com/in/yourusername"
+              href="https://instagram.com/yourusername"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="LinkedIn"
+              aria-label="Instagram"
               className="hover:text-pink-400"
             >
               <BsInstagram size={24} />
             </Link>
             <Link
-              href="https://linkedin.com/in/yourusername"
+              href="https://facebook.com/yourusername"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="LinkedIn"
+              aria-label="Facebook"
               className="hover:text-blue-600"
             >
               <BsFacebook size={24} />
             </Link>
-            
           </div>
         </div>
         <Image
@@ -82,13 +87,9 @@ const Banner = () => {
             "Digital Forensics Specialist",
           ]}
           mainClassName="px-2 sm:px-2 md:px-3 bg-cyan-300 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 w-fit rounded-lg"
-          staggerFrom={"last"}
-          initial={{ y: "100%" }}
-          animate={{ y: 0 }}
-          exit={{ y: "-120%" }}
+          staggerFrom="last"
           staggerDuration={0.025}
           splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
-          transition={{ type: "spring", damping: 30, stiffness: 400 }}
           rotationInterval={3000}
         />
         <p className="text-sm">

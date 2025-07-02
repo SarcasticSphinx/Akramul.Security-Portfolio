@@ -234,7 +234,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         <FaUser className="text-black size-6 m-2 mb-6" />
       )}
       <blockquote className="text-md font-semibold italic text-gray-800 mb-4">
-        "{quote}"
+        &quot;{quote}&quot;
       </blockquote>
       <div className="text-sm text-gray-600">
         <p>

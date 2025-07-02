@@ -9,11 +9,7 @@ import React, {
 import {
   motion,
   AnimatePresence,
-  Transition,
-  type VariantLabels,
-  type Target,
-  type AnimationControls,
-  type TargetAndTransition,
+  type Transition,
 } from "framer-motion";
 
 function cn(...classes: (string | undefined | null | boolean)[]): string {
@@ -27,16 +23,50 @@ export interface RotatingTextRef {
   reset: () => void;
 }
 
-export interface RotatingTextProps
-  extends Omit<
-    React.ComponentPropsWithoutRef<typeof motion.span>,
-    "children" | "transition" | "initial" | "animate" | "exit"
-  > {
+type AnimationProps = {
+  x?: number | string;
+  y?: number | string;
+  z?: number | string;
+  opacity?: number;
+  scale?: number;
+  scaleX?: number;
+  scaleY?: number;
+  rotate?: number | string;
+  rotateX?: number | string;
+  rotateY?: number | string;
+  rotateZ?: number | string;
+  skew?: number | string;
+  skewX?: number | string;
+  skewY?: number | string;
+  originX?: number | string;
+  originY?: number | string;
+  originZ?: number | string;
+  width?: number | string;
+  height?: number | string;
+  top?: number | string;
+  left?: number | string;
+  right?: number | string;
+  bottom?: number | string;
+  background?: string;
+  backgroundColor?: string;
+  color?: string;
+  borderColor?: string;
+  borderWidth?: number | string;
+  borderRadius?: number | string;
+  filter?: string;
+  backdropFilter?: string;
+  clipPath?: string;
+  pathLength?: number;
+  pathOffset?: number;
+  pathSpacing?: number;
+};
+
+export interface RotatingTextProps {
   texts: string[];
   transition?: Transition;
-  initial?: boolean | Target | VariantLabels;
-  animate?: boolean | VariantLabels | AnimationControls | TargetAndTransition;
-  exit?: Target | VariantLabels;
+  initial?: AnimationProps;
+  animate?: AnimationProps;
+  exit?: AnimationProps;
   animatePresenceMode?: "sync" | "wait";
   animatePresenceInitial?: boolean;
   rotationInterval?: number;
@@ -49,6 +79,8 @@ export interface RotatingTextProps
   mainClassName?: string;
   splitLevelClassName?: string;
   elementLevelClassName?: string;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
@@ -206,7 +238,7 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
           "flex flex-wrap whitespace-pre-wrap relative",
           mainClassName,
         )}
-        {...rest}
+        style={rest.style}
         layout
         transition={transition}
       >

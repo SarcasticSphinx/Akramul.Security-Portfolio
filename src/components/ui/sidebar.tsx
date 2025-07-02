@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { motion, Variants } from "framer-motion";
+import { motion, Variants, Transition } from "framer-motion";
 import { Badge } from "@/components/ui/badge"
 import {
   Blocks,
@@ -56,7 +56,7 @@ const variants: Variants = {
   },
 };
 
-const transitionProps = {
+const transitionProps: Transition = {
   type: "tween",
   ease: "easeOut",
   duration: 0.2,
@@ -74,13 +74,11 @@ const sidebarVariants: Variants = {
   },
 };
 
-
-const staggerVariants = {
+const staggerVariants: Variants = {
   open: {
     transition: { staggerChildren: 0.03, delayChildren: 0.02 },
   },
 };
-
 
 export function SessionNavBar() {
   const [isCollapsed, setIsCollapsed] = useState(true);

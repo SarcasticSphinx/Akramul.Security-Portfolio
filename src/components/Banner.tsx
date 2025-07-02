@@ -2,7 +2,6 @@
 import React from "react";
 import Image from "next/image";
 import RotatingText from "./ui/RotatingText/RotatingText";
-import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 import {
   BsFacebook,
   BsGithub,

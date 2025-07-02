@@ -11,6 +11,7 @@ import {
   BsTwitterX,
 } from "react-icons/bs";
 import Link from "next/link";
+import { MyStoryModal } from "./MyStoryModal";
 
 const Banner = () => {
   return (
@@ -98,7 +99,7 @@ const Banner = () => {
           across digital landscapes. Combining technical precision with
           strategic insight to protect organizational assets and data integrity.
         </p>
-        <InteractiveHoverButton text="My Story" className="text-sm" />
+        <MyStoryModal />
       </div>
 
       {/* Left-Side */}

@@ -5,20 +5,27 @@ import { cn } from "@/lib/utils";
 interface InteractiveHoverButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text?: string;
+  as?: React.ElementType; // Add this line
 }
 
 const InteractiveHoverButton = React.forwardRef<
   HTMLButtonElement,
   InteractiveHoverButtonProps
->(({ text = "Button", className, ...props }, ref) => {
+>(({ text = "Button", className, as: Component = "button", ...props }, ref) => {
+  // For non-button elements, remove button-only props
+  const isButton = Component === "button";
+  const safeProps = isButton
+    ? { ref, ...props }
+    : { ...props }; // Don't pass ref or button-only props to non-buttons
+
   return (
-    <button
-      ref={ref}
+    <Component
+      ref={isButton ? ref : undefined}
       className={cn(
         "group relative w-32 cursor-pointer overflow-hidden rounded-full border bg-background p-2 text-center font-semibold",
         className,
       )}
-      {...props}
+      {...safeProps}
     >
       <span className="inline-block translate-x-2 transition-all duration-300 group-hover:translate-x-12 group-hover:opacity-0">
         {text}
@@ -28,7 +35,7 @@ const InteractiveHoverButton = React.forwardRef<
         <ArrowRight />
       </div>
       <div className="absolute left-[20%] top-[40%] h-2 w-2 scale-[1] rounded-lg bg-primary transition-all duration-300 group-hover:left-[0%] group-hover:top-[0%] group-hover:h-full group-hover:w-full group-hover:scale-[1.8] group-hover:bg-primary"></div>
-    </button>
+    </Component>
   );
 });
 

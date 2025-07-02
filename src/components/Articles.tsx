@@ -1,12 +1,14 @@
-
 import React from "react";
 import { BentoGrid, BentoGridItem } from "../components/ui/bento-grid";
 
-// Define the Article type
+// Define the Article type with proper image structure
 interface Article {
   title: string;
   description: string;
-  image?: string;
+  image?: {
+    src: string;
+    alt: string;
+  };
   icon?: React.ReactNode;
   link: string;
 }
@@ -45,10 +47,10 @@ export async function Articles() {
         <BentoGrid className="max-w-6xl mx-auto">
           {articles.map((article: Article, i: number) => (
             <BentoGridItem
-              key={i}
+              key={article.link || i} // Use unique identifier instead of index
               title={article.title}
               description={article.description}
-              image={article.image ? { src: article.image, alt: article.title } : undefined}
+              image={article.image}
               icon={article.icon}
               className={i === 3 || i === 6 ? "md:col-span-2" : ""}
               href={article.link}

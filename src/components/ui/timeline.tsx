@@ -1,9 +1,5 @@
 "use client";
-import {
-  useScroll,
-  useTransform,
-  motion,
-} from "motion/react";
+import { useScroll, useTransform, motion } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
 
 interface TimelineEntry {
@@ -38,15 +34,16 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
     >
       <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
         <h2 className="text-2xl md:text-4xl font-semibold mb-4 text-black dark:text-white max-w-4xl">
-          The Journey So Far
+          The Cybersecurity Journey
         </h2>
         <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-md">
-          Over the past two years, I&apos;ve been building and refining{" "}
+          Over the past few years, I&apos;ve been immersed in the world of{" "}
           <span className="font-medium text-black dark:text-white">
-            Aceternity
+            cybersecurity
           </span>
-          . Here&apos;s a look at the milestones and progress I&apos;ve made along the
-          way.
+          , working to protect systems, uncover vulnerabilities, and build
+          resilient defenses. Here&apos;s a glimpse into the milestones and
+          experiences that have shaped my path as a security professional.
         </p>
       </div>
 

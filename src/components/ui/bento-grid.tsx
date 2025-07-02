@@ -41,15 +41,8 @@ export const BentoGridItem = ({
   icon,
   href,
 }: BentoGridItemProps) => {
-  return (
-    <Link
-      href={href || "#"}
-      passHref
-      className={cn(
-        "group/bento shadow-input row-span-1 flex flex-col justify-between space-y-4 rounded-xl border border-neutral-200 bg-white p-4 transition duration-200 hover:shadow-xl dark:border-white/[0.2] dark:bg-black dark:shadow-none",
-        className
-      )}
-    >
+  const content = (
+    <>
       <div className="relative h-full w-full overflow-hidden rounded-xl">
         {image?.src && (
           <img
@@ -69,6 +62,28 @@ export const BentoGridItem = ({
           {description}
         </div>
       </div>
+    </>
+  );
+
+  return href ? (
+    <Link
+      href={href}
+      passHref
+      className={cn(
+        "group/bento shadow-input row-span-1 flex flex-col justify-between space-y-4 rounded-xl border border-neutral-200 bg-white p-4 transition duration-200 hover:shadow-xl dark:border-white/[0.2] dark:bg-black dark:shadow-none",
+        className
+      )}
+    >
+      {content}
     </Link>
+  ) : (
+    <div
+      className={cn(
+        "group/bento shadow-input row-span-1 flex flex-col justify-between space-y-4 rounded-xl border border-neutral-200 bg-white p-4 transition duration-200 hover:shadow-xl dark:border-white/[0.2] dark:bg-black dark:shadow-none",
+        className
+      )}
+    >
+      {content}
+    </div>
   );
 };

@@ -30,26 +30,3 @@ export async function POST(req: NextRequest) {
   }
 }
 
-export async function DELETE(req: NextRequest) {
-  try {
-    await connectToDB();
-    const { id } = await req.json();
-
-    if (!id) {
-      return NextResponse.json({ error: "ID is required" }, { status: 400 });
-    }
-
-    const deletedArticle = await Article.findByIdAndDelete(id);
-
-    if (!deletedArticle) {
-      return NextResponse.json({ error: "Article not found" }, { status: 404 });
-    }
-
-    return NextResponse.json({ message: "Article deleted successfully" });
-  } catch (error) {
-    return NextResponse.json(
-      { error: `Failed to delete Article: ${error}` },
-      { status: 500 }
-    );
-  }
-}

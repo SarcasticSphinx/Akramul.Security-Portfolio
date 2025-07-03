@@ -139,7 +139,10 @@ const ExperienceAdmin = () => {
       if (isCreating) {
         await axiosInstance.post("/experiences", formData);
       } else if (isEditing) {
-        await axiosInstance.put(`/experiences/${isEditing}`, formData);
+        await axiosInstance.put(`/experiences/${isEditing}`, {
+          _id: isEditing,
+          ...formData,
+        });
       }
       fetchExperiences();
       cancelEditing();

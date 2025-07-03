@@ -2,7 +2,6 @@
 import axiosInstance from "@/lib/axios";
 import React, { useState } from "react";
 import { FiEdit, FiTrash2, FiPlus, FiCheck, FiUser } from "react-icons/fi";
-import Image from "next/image";
 
 interface ITestimonial {
   _id: string;

@@ -34,15 +34,16 @@ const ServicesSection = async () => {
         id="service"
         className="text-center flex flex-col lg:flex-row items-center justify-center gap-2 mb-16 lg:px-30 py-20"
       >
-        <div>
-          <h2 className="lg:text-6xl text-3xl font-bold text-white mb-6">
+        <div className="text-center px-4 mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
             Services I Provide
           </h2>
-          <p className="sm:text-xl  text-gray-400 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl sm:max-w-3xl mx-auto">
             Helping individuals and brands stay safe online through recovery,
             security setup, and expert guidance.
           </p>
         </div>
+
         <RadialOrbitalTimeline timelineData={timelineData} />
       </div>
     </div>

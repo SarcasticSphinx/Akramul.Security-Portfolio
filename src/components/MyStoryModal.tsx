@@ -4,7 +4,6 @@ import {
   Modal,
   ModalBody,
   ModalContent,
-  ModalFooter,
   ModalTrigger,
 } from "./ui/animated-modal";
 import { ArrowRight } from "lucide-react";
@@ -79,17 +78,7 @@ export function MyStoryModal() {
               </span>
             </div>
           </ModalContent>
-          <ModalFooter>
-            {/* If your modal library provides a ModalClose, use it here instead */}
-            <button
-              type="button"
-              className="px-4 py-2 bg-black text-white dark:bg-white dark:text-black rounded-md border border-black text-sm"
-              // onClick={() => modalRef.current?.close()} // Use your modal's close method if needed
-              data-modal-close // If your modal lib supports data attributes for closing
-            >
-              Close
-            </button>
-          </ModalFooter>
+          
         </ModalBody>
       </Modal>
     </div>

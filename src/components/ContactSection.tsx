@@ -13,7 +13,10 @@ import {
 
 const ContactSection = () => {
   return (
-    <div id="contact" className="w-full bg-slate-950 py-12 px-4 sm:px-6 lg:px-30 overflow-hidden">
+    <div
+      id="contact"
+      className="w-full bg-slate-950 py-12 px-4 sm:px-6 lg:px-30 overflow-hidden"
+    >
       <div className="max-w-6xl mx-auto ">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -23,7 +26,9 @@ const ContactSection = () => {
         >
           {/* Left Column - Contact Info */}
           <div className="z-99 flex flex-col justify-center sm:h-screen px-4 pb-20 sm:pb-0 sm:px-0 w-fit">
-            <h1 className="text-3xl whitespace-nowrap">Contact Informations</h1>
+            <h1 className="text-2xl md:text-3xl whitespace-nowrap">
+              Contact Informations
+            </h1>
 
             <motion.div
               className="space-y-6 my-6"
@@ -31,7 +36,8 @@ const ContactSection = () => {
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
-              <div className="flex items-start gap-4">
+              {/* Email */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
                 <div className="p-2 bg-gray-900 rounded-lg text-white">
                   <FiMail className="text-xl" />
                 </div>
@@ -39,14 +45,15 @@ const ContactSection = () => {
                   <h3 className="text-gray-400 text-sm">Email</h3>
                   <a
                     href="mailto:digitx.comilla@gmail.com"
-                    className="text-white hover:text-blue-400 transition-colors"
+                    className="text-white hover:text-blue-400 transition-colors break-all"
                   >
                     digitx.comilla@gmail.com
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
+              {/* Phone */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
                 <div className="p-2 bg-gray-900 rounded-lg text-white">
                   <FiPhone className="text-xl" />
                 </div>
@@ -61,7 +68,8 @@ const ContactSection = () => {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
+              {/* Resume */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
                 <div className="p-2 bg-gray-900 rounded-lg text-white">
                   <FiDownload className="text-xl" />
                 </div>
@@ -77,7 +85,8 @@ const ContactSection = () => {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
+              {/* Location */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
                 <div className="p-2 bg-gray-900 rounded-lg text-white">
                   <FiMapPin className="text-xl" />
                 </div>
@@ -87,6 +96,7 @@ const ContactSection = () => {
                 </div>
               </div>
             </motion.div>
+
             <hr className="w-3/4" />
             <div className="flex space-x-6 text-gray-700 dark:text-gray-300 mt-8">
               <Link
@@ -163,8 +173,8 @@ const ContactSection = () => {
                 transition={{ delay: 0.5, duration: 0.6 }}
                 className="text-gray-300 text-lg mt-2 text-center max-w-xl mx-auto"
               >
-                I&apos;m open to freelance work, collaborations, or just a friendly
-                hello.
+                I&apos;m open to freelance work, collaborations, or just a
+                friendly hello.
               </motion.p>
             </LampContainer>
           </motion.div>

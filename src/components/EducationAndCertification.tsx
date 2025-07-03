@@ -26,7 +26,7 @@ const getEducationAndCertifications = async (): Promise<
 
 export default async function EducationAndCertification() {
   const data = await getEducationAndCertifications();
-  console.log(data)
+  // console.log(data)
   return (
     <div id="journey" className="relative w-full overflow-clip">
       <Timeline data={data} />

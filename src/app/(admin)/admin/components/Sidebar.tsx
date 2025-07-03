@@ -13,15 +13,15 @@ const Sidebar: React.FC = () => {
     { path: "/admin/YzIxNGRmN2U5MzY=/services", label: "Services", icon: "🛠️" },
     { path: "/admin/YzIxNGRmN2U5MzY=/testimonials", label: "Testimonials", icon: "🌟" },
     { path: "/admin/YzIxNGRmN2U5MzY=/articles", label: "Articles", icon: "📝" },
-    { path: "/admin/YzIxNGRmN2U5MzY=/contact", label: "Contact", icon: "✉️" },
+    { path: "/admin/YzIxNGRmN2U5MzY=/change-admin-info", label: "Change Admin Info", icon: "***" },
   ];
 
   return (
-    <aside className="min-w-72 min-h-screen  text-white p-4 shadow-lg">
-      <div className="p-4 mb-6">
+    <aside className="max-w-80 max-h-screen  text-white ">
+      <Link href={'/admin/YzIxNGRmN2U5MzY='} className="p-4 mb-6">
         <h1 className="text-2xl font-bold text-white">Admin Dashboard</h1>
         <p className="text-blue-200 text-sm">Manage your content</p>
-      </div>
+      </Link>
 
       <nav>
         <ul className="space-y-2">
@@ -43,7 +43,7 @@ const Sidebar: React.FC = () => {
         </ul>
       </nav>
 
-      <div className="mt-auto pt-6 border-t border-blue-500">
+      <div className="mt-6 pt-6 border-t border-blue-500">
         <div className="text-center text-blue-200 text-sm">
           <p>Admin Panel v1.0</p>
         </div>

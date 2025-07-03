@@ -1,10 +1,38 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import BlurText from "../../../components/ui/BlurText/BlurText";
+import axiosInstance from "@/lib/axios";
+
+type AdminData = {
+  email: string;
+  password: string;
+};
+
+const fetchAdminData = async (): Promise<AdminData> => {
+  const response = await axiosInstance.get("/admin");
+  return response.data[0];
+};
 
 const AdminPage = () => {
+  const [adminData, setAdminData] = useState<AdminData>({
+    email: "",
+    password: "",
+  });
+  useEffect(() => {
+    const getAdminData = async () => {
+      try {
+        const data = await fetchAdminData();
+        setAdminData(data);
+      } catch (error) {
+        console.error("Failed to fetch admin data:", error);
+      }
+    };
+
+    getAdminData();
+  }, []);
+
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
@@ -17,7 +45,7 @@ const AdminPage = () => {
     setError("");
 
     // Simple authentication
-    if (email === "akramul@gmail.com" && password === "123456") {
+    if (email === adminData.email && password === adminData.password) {
       setTimeout(() => {
         router.push("/admin/YzIxNGRmN2U5MzY=");
       }, 1000);

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Lottie from "lottie-react";
 import { FiSend } from "react-icons/fi";
 import SendMessage from "./SendMessage.json";
+import emailjs from "emailjs-com";
 
 const SendAMessage = () => {
   const [formData, setFormData] = useState({
@@ -13,8 +14,30 @@ const SendAMessage = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    window.location.href = `mailto:digitx.comilla@gmail.com?subject=Message from ${formData.name}&body=${formData.message} (${formData.email})`;
-    setFormData({ name: "", email: "", message: "" });
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      message: formData.message,
+    };
+
+    emailjs
+      .send(
+        "service_e0dsgpb", // replace with your actual service ID
+        "template_alzodhg", // replace with your template ID
+        templateParams,
+        "ZkSHEGBHRZy0PJzQL" // replace with your public API key
+      )
+      .then(
+        () => {
+          alert("Message sent successfully!");
+          setFormData({ name: "", email: "", message: "" });
+        },
+        (error) => {
+          alert("Failed to send message. Please try again later.");
+          console.error(error);
+        }
+      );
   };
 
   const handleChange = (
@@ -23,10 +46,11 @@ const SendAMessage = () => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+
   return (
-    <div className="flex justify-center items-center sm:px-30 px-6  gap-8 mb-20">
+    <div className="flex justify-center items-center sm:px-30 px-6 gap-8 mb-20">
       <div className="h-full w-2/5 hidden sm:block overflow-hidden">
-        <Lottie animationData={SendMessage} loop={true}  />
+        <Lottie animationData={SendMessage} loop={true} />
       </div>
       <div>
         <h1 className="text-3xl">Send A Message</h1>

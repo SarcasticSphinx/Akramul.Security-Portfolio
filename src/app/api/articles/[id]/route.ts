@@ -3,13 +3,11 @@ import Article from "@/models/Articles.model"; // Ensure this path is correct
 import { NextRequest, NextResponse } from "next/server";
 
 // PUT request handler for /api/articles/[id]
-export async function PUT(
-  req: NextRequest,
-  { params }: { params: { id: string } } // Get the dynamic ID from the URL parameters
-) {
+export async function PUT(req: NextRequest) {
   try {
     await connectToDB();
-    const { id } = params; // Extract the ID from the URL
+    const url = new URL(req.url);
+    const id = url.pathname.split("/").pop(); // extract [id]
 
     // Basic validation for ID presence
     if (!id) {
@@ -43,7 +41,7 @@ export async function PUT(
     return NextResponse.json(updatedArticle);
   } catch (error) {
     console.error(
-      `PUT (Article): Failed to update Article with ID ${params.id || "N/A"}:`,
+      `PUT (Article): Failed to update Article with ID ${"N/A"}:`,
       error
     );
     return NextResponse.json(
@@ -58,13 +56,11 @@ export async function PUT(
 }
 
 // DELETE request handler for /api/articles/[id]
-export async function DELETE(
-  req: NextRequest,
-  { params }: { params: { id: string } } // Get the dynamic ID from the URL parameters
-) {
+export async function DELETE(req: NextRequest) {
   try {
     await connectToDB();
-    const { id } = params; // Extract the ID from the URL
+    const url = new URL(req.url);
+    const id = url.pathname.split("/").pop(); // extract [id]
 
     // Basic validation for ID presence
     if (!id) {
@@ -85,9 +81,7 @@ export async function DELETE(
     return NextResponse.json({ message: "Article deleted successfully" });
   } catch (error) {
     console.error(
-      `DELETE (Article): Failed to delete Article with ID ${
-        params.id || "N/A"
-      }:`,
+      `DELETE (Article): Failed to delete Article with ID ${"N/A"}:`,
       error
     );
     return NextResponse.json(

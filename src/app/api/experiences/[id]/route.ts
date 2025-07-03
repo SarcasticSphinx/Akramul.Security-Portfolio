@@ -3,14 +3,11 @@ import Experience from "@/models/Experience.model";
 import { NextRequest, NextResponse } from "next/server";
 
 // PUT request handler for /api/experiences/[id]
-export async function PUT(
-  req: NextRequest,
-  { params }: { params: { id: string } } // This is how you access the dynamic ID from the URL
-) {
+export async function PUT(req: NextRequest) {
   try {
     await connectToDB();
-    const { id } = params; // Extract the 'id' directly from the URL parameters
-
+    const url = new URL(req.url);
+    const id = url.pathname.split("/").pop(); // extract [id]
     // Ensure an ID is present (though Next.js usually handles this by not matching the route if no ID is there)
     if (!id) {
       return NextResponse.json({ error: "ID is required" }, { status: 400 });
@@ -55,14 +52,11 @@ export async function PUT(
 }
 
 // DELETE request handler for /api/experiences/[id]
-export async function DELETE(
-  req: NextRequest,
-  { params }: { params: { id: string } } // Access the dynamic ID from the URL
-) {
+export async function DELETE(req: NextRequest) {
   try {
     await connectToDB();
-    const { id } = params; // Extract the 'id' from the URL parameters
-
+    const url = new URL(req.url);
+    const id = url.pathname.split("/").pop(); // extract [id]
     if (!id) {
       // Again, Next.js typically handles this by not matching the route, but a check is harmless.
       return NextResponse.json({ error: "ID is required" }, { status: 400 });
@@ -81,7 +75,11 @@ export async function DELETE(
   } catch (error) {
     console.error("Error deleting experience:", error); // Log the error for debugging
     return NextResponse.json(
-      { error: `Failed to delete Experience: ${error instanceof Error ? error.message : String(error)}` },
+      {
+        error: `Failed to delete Experience: ${
+          error instanceof Error ? error.message : String(error)
+        }`,
+      },
       { status: 500 }
     );
   }

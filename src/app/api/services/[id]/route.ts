@@ -3,14 +3,11 @@ import Service from "@/models/Service.model"; // Ensure this path is correct
 import { NextRequest, NextResponse } from "next/server";
 
 // PUT request handler for /api/services/[id]
-export async function PUT(
-  req: NextRequest,
-  { params }: { params: { id: string } } // Get the dynamic ID from the URL parameters
-) {
+export async function PUT(req: NextRequest) {
   try {
     await connectToDB();
-    const { id } = params; // Extract the ID from the URL
-
+    const url = new URL(req.url);
+    const id = url.pathname.split("/").pop(); // extract [id]
     // Basic validation for ID presence
     if (!id) {
       console.error("PUT (Service): ID is missing in URL parameters.");
@@ -43,7 +40,7 @@ export async function PUT(
     return NextResponse.json(updatedService);
   } catch (error) {
     console.error(
-      `PUT (Service): Failed to update service with ID ${params.id || "N/A"}:`,
+      `PUT (Service): Failed to update service with ID ${"N/A"}:`,
       error
     );
     return NextResponse.json(
@@ -58,14 +55,11 @@ export async function PUT(
 }
 
 // DELETE request handler for /api/services/[id]
-export async function DELETE(
-  req: NextRequest,
-  { params }: { params: { id: string } } // Get the dynamic ID from the URL parameters
-) {
+export async function DELETE(req: NextRequest) {
   try {
     await connectToDB();
-    const { id } = params; // Extract the ID from the URL
-
+    const url = new URL(req.url);
+    const id = url.pathname.split("/").pop(); // extract [id]
     // Basic validation for ID presence
     if (!id) {
       console.error("DELETE (Service): ID is missing in URL parameters.");
@@ -85,9 +79,7 @@ export async function DELETE(
     return NextResponse.json({ message: "Service deleted successfully" });
   } catch (error) {
     console.error(
-      `DELETE (Service): Failed to delete service with ID ${
-        params.id || "N/A"
-      }:`,
+      `DELETE (Service): Failed to delete service with ID ${"N/A"}:`,
       error
     );
     return NextResponse.json(

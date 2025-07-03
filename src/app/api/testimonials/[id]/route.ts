@@ -3,14 +3,11 @@ import { connectToDB } from "@/lib/mongoose";
 import Testimonial from "@/models/Testimonial.model"; // Ensure this path is correct
 
 // PUT request handler for /api/testimonials/[id]
-export async function PUT(
-  req: NextRequest,
-  { params }: { params: { id: string } } // Get the dynamic ID from the URL parameters
-) {
+export async function PUT(req: NextRequest) {
   try {
     await connectToDB();
-    const { id } = params; // Extract the ID from the URL
-
+    const url = new URL(req.url);
+    const id = url.pathname.split("/").pop(); // extract [id]
     // Basic validation for ID presence
     if (!id) {
       console.error("PUT: ID is missing in URL parameters.");
@@ -45,7 +42,7 @@ export async function PUT(
     console.log(`PUT: Testimonial with ID ${id} updated successfully.`);
     return NextResponse.json(updatedTestimonial);
   } catch (error) {
-    console.error(`PUT: Failed to update Testimonial with ID ${params.id || 'N/A'}:`, error);
+    console.error(`PUT: Failed to update Testimonial with ID ${"N/A"}:`, error);
     return NextResponse.json(
       {
         error: `Failed to update Testimonial: ${
@@ -58,14 +55,11 @@ export async function PUT(
 }
 
 // DELETE request handler for /api/testimonials/[id]
-export async function DELETE(
-  req: NextRequest,
-  { params }: { params: { id: string } } // Get the dynamic ID from the URL parameters
-) {
+export async function DELETE(req: NextRequest) {
   try {
     await connectToDB();
-    const { id } = params; // Extract the ID from the URL
-
+    const url = new URL(req.url);
+    const id = url.pathname.split("/").pop(); // extract [id]
     // Basic validation for ID presence
     if (!id) {
       console.error("DELETE: ID is missing in URL parameters.");
@@ -85,9 +79,16 @@ export async function DELETE(
     console.log(`DELETE: Testimonial with ID ${id} deleted successfully.`);
     return NextResponse.json({ message: "Testimonial deleted successfully" });
   } catch (error) {
-    console.error(`DELETE: Failed to delete Testimonial with ID ${params.id || 'N/A'}:`, error);
+    console.error(
+      `DELETE: Failed to delete Testimonial with ID ${"N/A"}:`,
+      error
+    );
     return NextResponse.json(
-      { error: `Failed to delete Testimonial: ${error instanceof Error ? error.message : String(error)}` },
+      {
+        error: `Failed to delete Testimonial: ${
+          error instanceof Error ? error.message : String(error)
+        }`,
+      },
       { status: 500 }
     );
   }
